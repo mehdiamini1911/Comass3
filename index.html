@@ -436,20 +436,33 @@
                 </div>
             </div>
             
-            <!-- RIGHT SIDE - BULLETPROOF FORMSPREE FORM -->
+            <!-- RIGHT SIDE - UPDATED FORM WITH INLINE SUCCESS MESSAGE -->
             <div class="contact-form-container">
                 <h3>Send a Message</h3>
+                
+                <!-- Success Message (Hidden by default) -->
+                <div id="success-message" class="success-message" style="display: none;">
+                    <div class="message-content">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Thank You!</h3>
+                        <p>Your message has been sent successfully.</p>
+                        <p>We'll get back to you within 24 hours.</p>
+                        <button onclick="resetContactForm()" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i> Send Another Message
+                        </button>
+                    </div>
+                </div>
                 
                 <!-- SIMPLE, WORKING FORMSPREE FORM -->
                 <form action="https://formspree.io/f/mreagenr" 
                       method="POST" 
                       id="contact-form" 
-                      class="contact-form"
-                      onsubmit="return true;">
+                      class="contact-form">
                     
                     <!-- Formspree hidden fields -->
                     <input type="hidden" name="_subject" value="New Compass 3 Contact Form Submission">
                     <input type="hidden" name="_language" value="en">
+                    <input type="hidden" name="_next" value="#">
                     
                     <div class="form-group">
                         <label>Your Name *</label>
@@ -483,13 +496,13 @@
                         <textarea name="message" placeholder="Please describe your inquiry in detail..." rows="5" required></textarea>
                     </div>                 
                    
-                    <button type="submit" class="btn btn-primary" onclick="this.disabled=true; this.form.submit();">
+                    <button type="submit" class="btn btn-primary" id="contact-submit-btn">
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>            
 
                 </form>
                 
-                <!-- BULLETPROOF FORMSPREE SCRIPT -->
+                <!-- UPDATED FORMSPREE SCRIPT WITH AJAX SUBMISSION -->
                 <script>
                 // Ensure form submits to Formspree without interference
                 (function() {
@@ -507,21 +520,139 @@
                         
                         // Add clean submit handler
                         freshForm.addEventListener('submit', function(e) {
-                            console.log('Submitting to Formspree:', this.action);
-                            // Allow natural submission - NO preventDefault()
-                            
-                            // Optional: Show loading state
-                            var submitBtn = this.querySelector('button[type="submit"]');
-                            if (submitBtn) {
-                                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                                submitBtn.disabled = true;
-                            }
+                            e.preventDefault(); // Prevent default form submission
+                            submitContactForm(e);
                         });
                         
-                        console.log('Form ready for Formspree submission');
+                        console.log('Form ready for Formspree AJAX submission');
                     });
                 })();
+                
+                // Custom form submission handler
+                function submitContactForm(event) {
+                    var form = document.getElementById('contact-form');
+                    var submitBtn = document.getElementById('contact-submit-btn');
+                    var originalBtnText = submitBtn.innerHTML;
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Get form data
+                    var formData = new FormData(form);
+                    
+                    // Submit via AJAX to Formspree
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success message
+                            document.getElementById('contact-form').style.display = 'none';
+                            document.getElementById('success-message').style.display = 'block';
+                            console.log('Form submitted successfully to Formspree');
+                        } else {
+                            // Show error
+                            alert('There was a problem sending your message. Please try again.');
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+                        }
+                    })
+                    .catch(error => {
+                        // Show error
+                        alert('There was a problem sending your message. Please try again.');
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.disabled = false;
+                    });
+                    
+                    return false;
+                }
+                
+                // Reset form function
+                function resetContactForm() {
+                    document.getElementById('contact-form').reset();
+                    document.getElementById('contact-form').style.display = 'block';
+                    document.getElementById('success-message').style.display = 'none';
+                    
+                    // Reset button state
+                    var submitBtn = document.getElementById('contact-submit-btn');
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    submitBtn.disabled = false;
+                }
                 </script>
+                
+                <!-- Add some CSS for the success message -->
+                <style>
+                .success-message {
+                    background: #f8f9fa;
+                    border: 1px solid #e9ecef;
+                    border-radius: 8px;
+                    padding: 2.5rem 2rem;
+                    text-align: center;
+                    margin-top: 1rem;
+                    animation: fadeIn 0.5s ease;
+                }
+                
+                .success-message .message-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1rem;
+                }
+                
+                .success-message .fa-check-circle {
+                    font-size: 4rem;
+                    color: #28a745;
+                    margin-bottom: 1rem;
+                }
+                
+                .success-message h3 {
+                    color: #28a745;
+                    margin: 0;
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                }
+                
+                .success-message p {
+                    color: #6c757d;
+                    margin: 0.5rem 0;
+                    font-size: 1.1rem;
+                    line-height: 1.5;
+                }
+                
+                .btn-secondary {
+                    background: #6c757d;
+                    color: white;
+                    border: none;
+                    padding: 0.75rem 1.75rem;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-top: 1.5rem;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    transition: background 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+                
+                .btn-secondary:hover {
+                    background: #5a6268;
+                }
+                
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                
+                .fa-spinner {
+                    margin-right: 8px;
+                }
+                </style>
               
             </div>
         </div>
@@ -597,6 +728,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
