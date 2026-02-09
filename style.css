@@ -825,6 +825,43 @@ p {
     font-weight: bold;
 }
 
+.platform-note {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.platform-note i.fa-info-circle {
+    color: #007bff;
+    margin-right: 8px;
+}
+
+.platform-note strong {
+    color: #333;
+}
+
+.platform-note ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.platform-note li {
+    margin-bottom: 5px;
+}
+
+.platform-note a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.platform-note a:hover {
+    text-decoration: underline;
+}
+
 .platform-downloads {
     background: rgba(255, 255, 255, 0.1);
     padding: 1.5rem;
@@ -1360,3 +1397,4 @@ p {
 .screenshot-container {
     animation: fadeInUp 0.8s ease-out 0.3s both;
 }
+
