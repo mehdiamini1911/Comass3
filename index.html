@@ -10,6 +10,20 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="Assets/favicon.ico">
+    <style>
+        /* Additional styles for license card interactivity */
+        .license-card {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .license-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .license-card.featured:hover {
+            box-shadow: 0 15px 40px rgba(0,102,204,0.25);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -373,7 +387,7 @@
                 <div class="license-info">
                     <h3>Licensing Options</h3>
                     <div class="license-cards">
-                        <div class="license-card">
+                        <div class="license-card" data-license-type="academic">
                             <h4>Academic License</h4>
                             <div class="license-price">Free<span></span></div>
                             <ul>
@@ -385,7 +399,7 @@
                                 <li>Valid institute email is required</li>
                             </ul>
                         </div>
-                         <div class="license-card">
+                         <div class="license-card" data-license-type="research">
                             <h4>Research License</h4>
                             <div class="license-price">Free<span></span></div>
                             <ul>
@@ -395,7 +409,7 @@
                             </ul>
                         </div>
                         
-                        <div class="license-card featured">
+                        <div class="license-card featured" data-license-type="business">
                             <h4>Business License</h4>
                             <div class="license-price">$1,200<span>/year</span></div>
                             <ul>
@@ -451,7 +465,7 @@
             
             <!-- RIGHT SIDE - UPDATED FORM WITH INLINE SUCCESS MESSAGE -->
             <div class="contact-form-container">
-                <h3>Send a Message</h3>
+                <h3>Send a Message or a License Request</h3>
                 
                 <!-- Success Message (Hidden by default) -->
                 <div id="success-message" class="success-message" style="display: none;">
@@ -494,11 +508,13 @@
                     
                     <div class="form-group">
                         <label>Inquiry Type *</label>
-                        <select name="inquiry_type" required>
+                        <select name="inquiry_type" id="inquiry-type-select" required>
                             <option value="" disabled selected>Select an option</option>
                             <option value="technical">Technical Support</option>
                             <option value="sales">Sales & Licensing</option>
                             <option value="academic">Academic License</option>
+                            <option value="research">Research License</option>
+                            <option value="business">Business License</option>
                             <option value="training">Training Request</option>
                             <option value="other">Other Inquiry</option>
                         </select>
@@ -506,7 +522,7 @@
                     
                     <div class="form-group">
                         <label>Your Message *</label>
-                        <textarea name="message" placeholder="Please describe your inquiry in detail..." rows="5" required></textarea>
+                        <textarea name="message" id="message-text" placeholder="Please describe your inquiry in detail..." rows="5" required></textarea>
                     </div>                 
                    
                     <button type="submit" class="btn btn-primary" id="contact-submit-btn">
@@ -515,15 +531,64 @@
 
                 </form>
                 
-                <!-- UPDATED FORMSPREE SCRIPT WITH AJAX SUBMISSION -->
+                <!-- UPDATED FORMSPREE SCRIPT WITH AJAX SUBMISSION AND LICENSE CARD HANDLERS -->
                 <script>
-                // Ensure form submits to Formspree without interference
-                (function() {
-                    // Wait for page to load
-                    document.addEventListener('DOMContentLoaded', function() {
-                        var form = document.getElementById('contact-form');
-                        if (!form) return;
-                        
+                // Wait for page to load
+                document.addEventListener('DOMContentLoaded', function() {
+                    
+                    // ===== LICENSE CARD CLICK HANDLERS =====
+                    // Add click handlers to all license cards
+                    const licenseCards = document.querySelectorAll('.license-card');
+                    
+                    licenseCards.forEach(card => {
+                        card.addEventListener('click', function(e) {
+                            // Get license type from data attribute
+                            const licenseType = this.getAttribute('data-license-type');
+                            
+                            // Scroll to contact section
+                            document.getElementById('contact').scrollIntoView({ 
+                                behavior: 'smooth' 
+                            });
+                            
+                            // Small delay to ensure scroll completes before setting form
+                            setTimeout(() => {
+                                // Set the inquiry type dropdown
+                                const inquirySelect = document.getElementById('inquiry-type-select');
+                                if (inquirySelect) {
+                                    inquirySelect.value = licenseType;
+                                    
+                                    // Trigger change event for any listeners
+                                    const event = new Event('change', { bubbles: true });
+                                    inquirySelect.dispatchEvent(event);
+                                }
+                                
+                                // Set a helpful message based on license type
+                                const messageField = document.getElementById('message-text');
+                                if (messageField) {
+                                    let licenseName = '';
+                                    switch(licenseType) {
+                                        case 'academic': licenseName = 'Academic License'; break;
+                                        case 'research': licenseName = 'Research License'; break;
+                                        case 'business': licenseName = 'Business License'; break;
+                                    }
+                                    
+                                    messageField.value = `I am interested in applying for the ${licenseName}. Please provide information on how to proceed with the application process.\n\n`;
+                                }
+                                
+                                // Highlight the form
+                                const form = document.getElementById('contact-form');
+                                form.style.transition = 'box-shadow 0.3s ease';
+                                form.style.boxShadow = '0 0 0 3px rgba(0,102,204,0.3)';
+                                setTimeout(() => {
+                                    form.style.boxShadow = 'none';
+                                }, 2000);
+                            }, 500);
+                        });
+                    });
+                    
+                    // ===== FORM HANDLER =====
+                    var form = document.getElementById('contact-form');
+                    if (form) {
                         // Remove ALL existing event listeners by cloning
                         var newForm = form.cloneNode(true);
                         form.parentNode.replaceChild(newForm, form);
@@ -538,8 +603,8 @@
                         });
                         
                         console.log('Form ready for Formspree AJAX submission');
-                    });
-                })();
+                    }
+                });
                 
                 // Custom form submission handler
                 function submitContactForm(event) {
@@ -741,29 +806,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
