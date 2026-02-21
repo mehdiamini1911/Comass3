@@ -532,12 +532,12 @@
 
                 </form>
                 
-                <!-- UPDATED FORMSPREE SCRIPT WITH AJAX SUBMISSION AND LICENSE CARD HANDLERS -->
+                <!-- UPDATED SCRIPT - LICENSE CARDS NOW REDIRECT TO DOWNLOAD SECTION -->
                 <script>
                 // Wait for page to load
                 document.addEventListener('DOMContentLoaded', function() {
                     
-                    // ===== LICENSE CARD CLICK HANDLERS =====
+                    // ===== LICENSE CARD CLICK HANDLERS - UPDATED TO REDIRECT TO DOWNLOAD =====
                     // Add click handlers to all license cards
                     const licenseCards = document.querySelectorAll('.license-card');
                     
@@ -546,43 +546,28 @@
                             // Get license type from data attribute
                             const licenseType = this.getAttribute('data-license-type');
                             
-                            // Scroll to contact section
-                            document.getElementById('contact').scrollIntoView({ 
+                            // Scroll to download section instead of contact
+                            document.getElementById('download').scrollIntoView({ 
                                 behavior: 'smooth' 
                             });
                             
-                            // Small delay to ensure scroll completes before setting form
+                            // Small delay to ensure scroll completes before visual feedback
                             setTimeout(() => {
-                                // Set the inquiry type dropdown
-                                const inquirySelect = document.getElementById('inquiry-type-select');
-                                if (inquirySelect) {
-                                    inquirySelect.value = licenseType;
-                                    
-                                    // Trigger change event for any listeners
-                                    const event = new Event('change', { bubbles: true });
-                                    inquirySelect.dispatchEvent(event);
-                                }
-                                
-                                // Set a helpful message based on license type
-                                const messageField = document.getElementById('message-text');
-                                if (messageField) {
-                                    let licenseName = '';
-                                    switch(licenseType) {
-                                        case 'academic': licenseName = 'Academic License'; break;
-                                        case 'research': licenseName = 'Research License'; break;
-                                        case 'business': licenseName = 'Business License'; break;
+                                // Highlight the relevant license card in download section
+                                const downloadLicenseCards = document.querySelectorAll('#download .license-card');
+                                downloadLicenseCards.forEach(downloadCard => {
+                                    if (downloadCard.getAttribute('data-license-type') === licenseType) {
+                                        // Highlight the matching license card in download section
+                                        downloadCard.style.transition = 'box-shadow 0.3s ease, transform 0.3s ease';
+                                        downloadCard.style.boxShadow = '0 0 0 3px rgba(0,102,204,0.3)';
+                                        downloadCard.style.transform = 'scale(1.02)';
+                                        
+                                        setTimeout(() => {
+                                            downloadCard.style.boxShadow = '';
+                                            downloadCard.style.transform = '';
+                                        }, 2000);
                                     }
-                                    
-                                    messageField.value = `I am interested in applying for the ${licenseName}. Please provide information on how to proceed with the application process.\n\n`;
-                                }
-                                
-                                // Highlight the form
-                                const form = document.getElementById('contact-form');
-                                form.style.transition = 'box-shadow 0.3s ease';
-                                form.style.boxShadow = '0 0 0 3px rgba(0,102,204,0.3)';
-                                setTimeout(() => {
-                                    form.style.boxShadow = 'none';
-                                }, 2000);
+                                });
                             }, 500);
                         });
                     });
@@ -807,6 +792,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
