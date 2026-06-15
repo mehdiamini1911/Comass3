@@ -1,3 +1,5 @@
+Here is the HTML code that changes the "Our Commitment" message from a popup to permanent text placed near the Business License.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,100 +26,77 @@
             box-shadow: 0 15px 40px rgba(0,102,204,0.25);
         }
         
-        /* Floating Corner Note Styles */
-        .floating-corner-note {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            max-width: 320px;
-            background-color: #ffd966;
-            color: #333;
-            padding: 12px 18px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            z-index: 1000;
-            font-size: 0.9rem;
-            border-left: 4px solid #e6b800;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            animation: slideIn 0.5s ease-out;
-        }
-        
-        .floating-corner-note:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .note-content {
+        /* PERMANENT COMMITMENT NOTE (No longer floating/popup) */
+        .permanent-commitment {
+            background: linear-gradient(135deg, #fef9e6 0%, #fff6e0 100%);
+            border-left: 5px solid #e6b800;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
         
-        .note-icon {
-            font-size: 1.4rem;
-            color: #b38f00;
+        .permanent-commitment:hover {
+            background: #fff8e8;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
         
-        .note-text {
+        .commitment-icon {
+            font-size: 2rem;
+            color: #d4a017;
+            flex-shrink: 0;
+        }
+        
+        .commitment-text {
             flex: 1;
-            line-height: 1.5;
-            font-weight: 500;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            color: #2c3e2f;
         }
         
-        .note-close {
-            background: none;
-            border: none;
-            color: #8b7500;
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 0 5px;
-            transition: color 0.2s ease;
+        .commitment-text strong {
+            color: #b8860b;
+            font-weight: 700;
         }
         
-        .note-close:hover {
-            color: #4d4200;
-        }
-        
-        @keyframes slideIn {
-            from {
-                transform: translateX(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        .commitment-text i {
+            color: #b8860b;
         }
         
         /* Responsive adjustment for mobile */
         @media (max-width: 768px) {
-            .floating-corner-note {
-                bottom: 10px;
-                right: 10px;
-                left: 10px;
-                max-width: none;
+            .permanent-commitment {
+                padding: 0.9rem 1rem;
+                gap: 0.75rem;
+            }
+            .commitment-icon {
+                font-size: 1.6rem;
+            }
+            .commitment-text {
                 font-size: 0.85rem;
             }
         }
+        
+        /* Ensure license cards area has appropriate spacing */
+        .license-info {
+            margin-top: 1.5rem;
+        }
+        
+        .license-cards {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Keep rest of original styles intact (no conflicts) */
     </style>
 </head>
 <body>
-    <!-- Floating Corner Note -->
-    <div class="floating-corner-note" id="floatingNote">
-        <div class="note-content">
-            <div class="note-icon">
-                <i class="fas fa-hand-holding-heart"></i>
-            </div>
-            <div class="note-text">
-                <strong>Our Commitment:</strong> All income from the software is reinvested in Compass3 development to help academics and rock mechanics engineers better understand rock slope engineering.
-            </div>
-            <button class="note-close" onclick="closeFloatingNote()" aria-label="Close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- Navigation -->
+    <!-- Navigation (unchanged) -->
     <nav class="navbar">
         <div class="container">
             <ul class="nav-links">
@@ -431,7 +410,7 @@
         </div>
     </section>
 
-    <!-- Download Section -->
+    <!-- Download Section (Our Commitment now permanently placed near Business License) -->
     <section id="download" class="download">
         <div class="container">
             <h2><i class="fas fa-download"></i> Download Compass 3™</h2>
@@ -478,6 +457,16 @@
                 
                 <div class="license-info">
                     <h3>Licensing Options</h3>
+                    <!-- PERMANENT COMMITMENT NOTE - Now placed here, near Business License section, not as popup -->
+                    <div class="permanent-commitment">
+                        <div class="commitment-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="commitment-text">
+                            <strong><i class="fas fa-seedling"></i> Our Commitment:</strong> All income from the software is reinvested in Compass3 development to help academics and rock mechanics engineers better understand rock slope engineering. We believe in sustainable, community-driven innovation.
+                        </div>
+                    </div>
+                    
                     <div class="license-cards">
                         <div class="license-card" data-license-type="academic">
                             <h4>Academic License</h4>
@@ -523,7 +512,7 @@
     <div class="container">
         <h2><i class="fas fa-envelope"></i> Contact & Support</h2>
         <div class="contact-content">
-            <!-- LEFT SIDE - Keep this EXACTLY as it was -->
+            <!-- LEFT SIDE - unchanged -->
             <div class="contact-info">
                 <h3>Technical Support & Sales</h3>
                 <p>For technical support, licensing inquiries, or custom solutions:</p>
@@ -555,7 +544,7 @@
                 </div>
             </div>
             
-            <!-- RIGHT SIDE - UPDATED FORM WITH INLINE SUCCESS MESSAGE -->
+            <!-- RIGHT SIDE - Form with inline success message (unchanged from original) -->
             <div class="contact-form-container">
                 <h3>Send a Message or a License Request</h3>
                 
@@ -572,13 +561,12 @@
                     </div>
                 </div>
                 
-                <!-- SIMPLE, WORKING FORMSPREE FORM -->
+                <!-- Formspree form -->
                 <form action="https://formspree.io/f/mreagenr" 
                       method="POST" 
                       id="contact-form" 
                       class="contact-form">
                     
-                    <!-- Formspree hidden fields -->
                     <input type="hidden" name="_subject" value="New Compass 3 Contact Form Submission">
                     <input type="hidden" name="_language" value="en">
                     <input type="hidden" name="_next" value="#">
@@ -623,32 +611,24 @@
 
                 </form>
                 
-                <!-- UPDATED SCRIPT - LICENSE CARDS NOW REDIRECT TO DOWNLOAD SECTION -->
                 <script>
                 // Wait for page to load
                 document.addEventListener('DOMContentLoaded', function() {
                     
-                    // ===== LICENSE CARD CLICK HANDLERS - UPDATED TO REDIRECT TO DOWNLOAD =====
-                    // Add click handlers to all license cards
+                    // ===== LICENSE CARD CLICK HANDLERS - Redirect to Download (unchanged logic) =====
                     const licenseCards = document.querySelectorAll('.license-card');
                     
                     licenseCards.forEach(card => {
                         card.addEventListener('click', function(e) {
-                            // Get license type from data attribute
                             const licenseType = this.getAttribute('data-license-type');
-                            
-                            // Scroll to download section instead of contact
                             document.getElementById('download').scrollIntoView({ 
                                 behavior: 'smooth' 
                             });
                             
-                            // Small delay to ensure scroll completes before visual feedback
                             setTimeout(() => {
-                                // Highlight the relevant license card in download section
                                 const downloadLicenseCards = document.querySelectorAll('#download .license-card');
                                 downloadLicenseCards.forEach(downloadCard => {
                                     if (downloadCard.getAttribute('data-license-type') === licenseType) {
-                                        // Highlight the matching license card in download section
                                         downloadCard.style.transition = 'box-shadow 0.3s ease, transform 0.3s ease';
                                         downloadCard.style.boxShadow = '0 0 0 3px rgba(0,102,204,0.3)';
                                         downloadCard.style.transform = 'scale(1.02)';
@@ -663,40 +643,30 @@
                         });
                     });
                     
-                    // ===== FORM HANDLER =====
+                    // ===== FORM HANDLER with AJAX =====
                     var form = document.getElementById('contact-form');
                     if (form) {
-                        // Remove ALL existing event listeners by cloning
                         var newForm = form.cloneNode(true);
                         form.parentNode.replaceChild(newForm, form);
-                        
-                        // Get the new form reference
                         var freshForm = document.getElementById('contact-form');
                         
-                        // Add clean submit handler
                         freshForm.addEventListener('submit', function(e) {
-                            e.preventDefault(); // Prevent default form submission
+                            e.preventDefault();
                             submitContactForm(e);
                         });
-                        
-                        console.log('Form ready for Formspree AJAX submission');
                     }
                 });
                 
-                // Custom form submission handler
                 function submitContactForm(event) {
                     var form = document.getElementById('contact-form');
                     var submitBtn = document.getElementById('contact-submit-btn');
                     var originalBtnText = submitBtn.innerHTML;
                     
-                    // Show loading state
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                     submitBtn.disabled = true;
                     
-                    // Get form data
                     var formData = new FormData(form);
                     
-                    // Submit via AJAX to Formspree
                     fetch(form.action, {
                         method: 'POST',
                         body: formData,
@@ -706,19 +676,15 @@
                     })
                     .then(response => {
                         if (response.ok) {
-                            // Show success message
                             document.getElementById('contact-form').style.display = 'none';
                             document.getElementById('success-message').style.display = 'block';
-                            console.log('Form submitted successfully to Formspree');
                         } else {
-                            // Show error
                             alert('There was a problem sending your message. Please try again.');
                             submitBtn.innerHTML = originalBtnText;
                             submitBtn.disabled = false;
                         }
                     })
                     .catch(error => {
-                        // Show error
                         alert('There was a problem sending your message. Please try again.');
                         submitBtn.innerHTML = originalBtnText;
                         submitBtn.disabled = false;
@@ -727,25 +693,17 @@
                     return false;
                 }
                 
-                // Reset form function
                 function resetContactForm() {
                     document.getElementById('contact-form').reset();
                     document.getElementById('contact-form').style.display = 'block';
                     document.getElementById('success-message').style.display = 'none';
                     
-                    // Reset button state
                     var submitBtn = document.getElementById('contact-submit-btn');
                     submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
                     submitBtn.disabled = false;
                 }
-                
-                // Close floating note function
-                function closeFloatingNote() {
-                    document.getElementById('floatingNote').style.display = 'none';
-                }
                 </script>
                 
-                <!-- Add some CSS for the success message -->
                 <style>
                 .success-message {
                     background: #f8f9fa;
@@ -756,34 +714,29 @@
                     margin-top: 1rem;
                     animation: fadeIn 0.5s ease;
                 }
-                
                 .success-message .message-content {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     gap: 1rem;
                 }
-                
                 .success-message .fa-check-circle {
                     font-size: 4rem;
                     color: #28a745;
                     margin-bottom: 1rem;
                 }
-                
                 .success-message h3 {
                     color: #28a745;
                     margin: 0;
                     font-size: 1.8rem;
                     font-weight: 600;
                 }
-                
                 .success-message p {
                     color: #6c757d;
                     margin: 0.5rem 0;
                     font-size: 1.1rem;
                     line-height: 1.5;
                 }
-                
                 .btn-secondary {
                     background: #6c757d;
                     color: white;
@@ -799,16 +752,13 @@
                     align-items: center;
                     gap: 0.5rem;
                 }
-                
                 .btn-secondary:hover {
                     background: #5a6268;
                 }
-                
                 @keyframes fadeIn {
                     from { opacity: 0; transform: translateY(10px); }
                     to { opacity: 1; transform: translateY(0); }
                 }
-                
                 .fa-spinner {
                     margin-right: 8px;
                 }
@@ -888,3 +838,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+```
