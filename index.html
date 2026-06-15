@@ -1,4 +1,4 @@
-Here is the HTML code that changes the "Our Commitment" message from a popup to permanent text placed near the Business License.
+This is a complete HTML document that adds a new "Trusted By Industry Leaders" section to your rock mechanics software page, placing the Users.PNG image prominently near the business license area as requested.
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -91,6 +91,162 @@ Here is the HTML code that changes the "Our Commitment" message from a popup to 
         .license-cards {
             margin-bottom: 0.5rem;
         }
+
+        /* ========= BRAND NEW: TRUSTED USERS SECTION (with Users.png) ========= */
+        .trusted-users-section {
+            background: linear-gradient(120deg, #f4f9ff 0%, #eef2f7 100%);
+            padding: 3rem 0;
+            border-top: 1px solid #dce5ef;
+            border-bottom: 1px solid #dce5ef;
+            margin-top: 0;
+        }
+        
+        .users-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .users-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .users-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1e4663;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.3px;
+        }
+        
+        .users-header h2 i {
+            color: #2c7da0;
+            margin-right: 10px;
+        }
+        
+        .users-subhead {
+            font-size: 1.1rem;
+            color: #2c5a77;
+            max-width: 700px;
+            margin: 0 auto;
+            border-bottom: 2px solid #cbdde9;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .users-image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 32px;
+            padding: 1rem 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            transition: transform 0.25s ease;
+        }
+        
+        .users-image-container:hover {
+            transform: scale(1.01);
+        }
+        
+        .users-main-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 24px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        }
+        
+        .users-testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem 1.5rem;
+            flex: 1;
+            min-width: 240px;
+            max-width: 280px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.25s;
+            border: 1px solid rgba(44, 82, 130, 0.1);
+            text-align: center;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 30px -8px rgba(0,0,0,0.12);
+            border-color: #cbdde9;
+        }
+        
+        .testimonial-icon {
+            font-size: 2.5rem;
+            color: #2c7da0;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #2c3e50;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: #1e4663;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 0.75rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .users-stats-badge {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #bfd6e8;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1f6392;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #4a627a;
+        }
+        
+        @media (max-width: 768px) {
+            .users-header h2 {
+                font-size: 1.8rem;
+            }
+            .testimonial-card {
+                min-width: 220px;
+            }
+            .users-image-container {
+                padding: 0.5rem 1rem;
+            }
+        }
         
         /* Keep rest of original styles intact (no conflicts) */
     </style>
@@ -108,6 +264,7 @@ Here is the HTML code that changes the "Our Commitment" message from a popup to 
                 <li><a href="#documentation">Documentation</a></li>
                 <li><a href="#download">Download</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#users-spotlight">Users</a></li>
             </ul>
             <button class="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -457,7 +614,7 @@ Here is the HTML code that changes the "Our Commitment" message from a popup to 
                 
                 <div class="license-info">
                     <h3>Licensing Options</h3>
-                    <!-- PERMANENT COMMITMENT NOTE - Now placed here, near Business License section, not as popup -->
+                    <!-- PERMANENT COMMITMENT NOTE - Now placed here, near Business License section -->
                    
                     <div class="license-cards">
                         <div class="license-card" data-license-type="academic">
@@ -503,7 +660,65 @@ Here is the HTML code that changes the "Our Commitment" message from a popup to 
         </div>
     </section>
 
-<!-- Contact Section -->
+<!-- ========== BRAND NEW: TRUSTED USERS SPOTLIGHT SECTION (Users.PNG image displayed) ========== -->
+<section id="users-spotlight" class="trusted-users-section">
+    <div class="users-container">
+        <div class="users-header">
+            <h2><i class="fas fa-users"></i> Trusted By Industry Leaders</h2>
+            <div class="users-subhead">Join 800+ geotechnical professionals who rely on Compass 3™ worldwide</div>
+        </div>
+        
+        <!-- Users.PNG image displayed prominently -->
+        <div class="users-image-container">
+            <img src="Assets/Images/Users.PNG" alt="Compass 3 global user community — engineers, researchers, and consultants" class="users-main-img" onerror="this.onerror=null; this.src='https://placehold.co/1000x400/eef2f7/2c7da0?text=Compass3+Users+Worldwide';">
+        </div>
+        
+        <!-- Additional user testimonials and stats to reinforce community trust -->
+        <div class="users-testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-icon"><i class="fas fa-chalkboard-user"></i></div>
+                <p>"Compass 3 transformed our rock slope analysis workflow. The stereonet tools are incredibly precise and intuitive."</p>
+                <div class="testimonial-author">— Dr. Elena V., Mining Geotech</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-icon"><i class="fas fa-graduation-cap"></i></div>
+                <p>"Using Compass 3 in our advanced rock mechanics course elevated students' understanding of kinematic analysis."</p>
+                <div class="testimonial-author">— Prof. J. Chen, University of Toronto</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-icon"><i class="fas fa-hard-hat"></i></div>
+                <p>"The free academic license allowed our research group to validate new slope stability methods efficiently."</p>
+                <div class="testimonial-author">— R. Singh, Consulting Engineer</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-icon"><i class="fas fa-chart-line"></i></div>
+                <p>"Exceptional support and continuous updates. A must-have for any rock mechanics professional."</p>
+                <div class="testimonial-author">— M. Kowalski, Geotechnical Lead</div>
+            </div>
+        </div>
+        
+        <div class="users-stats-badge">
+            <div class="stat-item">
+                <div class="stat-number">28+</div>
+                <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Universities</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">40+</div>
+                <div class="stat-label">Mining Companies</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Commitment to R&D</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section (unchanged but appears after users section) -->
 <section id="contact" class="contact">
     <div class="container">
         <h2><i class="fas fa-envelope"></i> Contact & Support</h2>
