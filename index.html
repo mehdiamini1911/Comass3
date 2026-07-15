@@ -91,7 +91,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* ========= BRAND NEW: TRUSTED USERS SECTION (with Users.png) ========= */
+        /* ========= TRUSTED USERS SECTION (with Users.png) - Now appears right after Introduction ========= */
         .trusted-users-section {
             background: linear-gradient(120deg, #f4f9ff 0%, #eef2f7 100%);
             padding: 3rem 0;
@@ -257,13 +257,13 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#users-spotlight">Users</a></li>
                 <li><a href="#about-developer">About the Developers</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#applications">Applications</a></li>
                 <li><a href="#documentation">Documentation</a></li>
                 <li><a href="#download">Download</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#users-spotlight">Users</a></li>
             </ul>
             <button class="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -355,7 +355,22 @@
         </div>
     </section>
 
-       <!-- About the Developer Section -->
+    <!-- ========== TRUSTED USERS SPOTLIGHT SECTION - Now placed immediately after Introduction ========== -->
+    <section id="users-spotlight" class="trusted-users-section">
+        <div class="users-container">
+            <div class="users-header">
+                <h2><i class="fas fa-users"></i> Trusted By Industry Leaders</h2>
+                <div class="users-subhead">Join other geotechnical professionals who rely on Compass 3™ worldwide</div>
+            </div>
+            
+            <!-- Users.PNG image displayed prominently -->
+            <div class="users-image-container">
+                <img src="Assets/Images/Users.png" alt="Compass 3 global user community — engineers, researchers, and consultants" class="users-main-img" onerror="this.onerror=null; this.src='https://placehold.co/1000x400/eef2f7/2c7da0?text=Compass3+Users+Worldwide';">
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Developer Section -->
     <section id="about-developer" class="about-developer">
         <div class="container">
             <h2><i class="fas fa-user-tie"></i> About the Developers</h2>
@@ -659,282 +674,267 @@
         </div>
     </section>
 
-<!-- ========== BRAND NEW: TRUSTED USERS SPOTLIGHT SECTION (Users.PNG image displayed) ========== -->
-<section id="users-spotlight" class="trusted-users-section">
-    <div class="users-container">
-        <div class="users-header">
-            <h2><i class="fas fa-users"></i> Trusted By Industry Leaders</h2>
-            <div class="users-subhead">Join other geotechnical professionals who rely on Compass 3™ worldwide</div>
-        </div>
-        
-        <!-- Users.PNG image displayed prominently -->
-        <div class="users-image-container">
-            <img src="Assets/Images/Users.png" alt="Compass 3 global user community — engineers, researchers, and consultants" class="users-main-img" onerror="this.onerror=null; this.src='https://placehold.co/1000x400/eef2f7/2c7da0?text=Compass3+Users+Worldwide';">
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section (unchanged but appears after users section) -->
-<section id="contact" class="contact">
-    <div class="container">
-        <h2><i class="fas fa-envelope"></i> Contact & Support</h2>
-        <div class="contact-content">
-            <!-- LEFT SIDE - unchanged -->
-            <div class="contact-info">
-                <h3>Technical Support & Sales</h3>
-                <p>For technical support, licensing inquiries, or custom solutions:</p>
-                
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email Support</h4>
-                            <a href="mailto:support@compass3.ca">support@compass3.ca</a>
-                        </div>
-                    </div>
+    <!-- Contact Section (unchanged but appears after users section) -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2><i class="fas fa-envelope"></i> Contact & Support</h2>
+            <div class="contact-content">
+                <!-- LEFT SIDE - unchanged -->
+                <div class="contact-info">
+                    <h3>Technical Support & Sales</h3>
+                    <p>For technical support, licensing inquiries, or custom solutions:</p>
                     
-                    <div class="contact-method">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone Support</h4>
-                            <a href="tel:+16046443430">+1 604 6443430</a>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Support</h4>
+                                <a href="mailto:support@compass3.ca">support@compass3.ca</a>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <i class="fas fa-calendar-alt"></i>
-                        <div>
-                            <h4>Consultation</h4>
-                            <a href="#">Schedule a demo session</a>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone Support</h4>
+                                <a href="tel:+16046443430">+1 604 6443430</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <h4>Consultation</h4>
+                                <a href="#">Schedule a demo session</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- RIGHT SIDE - Form with inline success message (unchanged from original) -->
-            <div class="contact-form-container">
-                <h3>Send a Message or a License Request</h3>
                 
-                <!-- Success Message (Hidden by default) -->
-                <div id="success-message" class="success-message" style="display: none;">
-                    <div class="message-content">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>Thank You!</h3>
-                        <p>Your message has been sent successfully.</p>
-                        <p>We'll get back to you within 24 hours.</p>
-                        <button onclick="resetContactForm()" class="btn btn-secondary">
-                            <i class="fas fa-envelope"></i> Send Another Message
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Formspree form -->
-                <form action="https://formspree.io/f/mreagenr" 
-                      method="POST" 
-                      id="contact-form" 
-                      class="contact-form">
+                <!-- RIGHT SIDE - Form with inline success message (unchanged from original) -->
+                <div class="contact-form-container">
+                    <h3>Send a Message or a License Request</h3>
                     
-                    <input type="hidden" name="_subject" value="New Compass 3 Contact Form Submission">
-                    <input type="hidden" name="_language" value="en">
-                    <input type="hidden" name="_next" value="#">
-                    
-                    <div class="form-group">
-                        <label>Your Name *</label>
-                        <input type="text" name="name" placeholder="Enter your full name" required>
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="success-message" class="success-message" style="display: none;">
+                        <div class="message-content">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Thank You!</h3>
+                            <p>Your message has been sent successfully.</p>
+                            <p>We'll get back to you within 24 hours.</p>
+                            <button onclick="resetContactForm()" class="btn btn-secondary">
+                                <i class="fas fa-envelope"></i> Send Another Message
+                            </button>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label>Email Address *</label>
-                        <input type="email" name="email" placeholder="your.email@example.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Phone Number (Optional)</label>
-                        <input type="tel" name="phone" placeholder="(604) 644-3430">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Inquiry Type *</label>
-                        <select name="inquiry_type" id="inquiry-type-select" required>
-                            <option value="" disabled selected>Select an option</option>
-                            <option value="technical">Technical Support</option>
-                            <option value="sales">Sales & Licensing</option>
-                            <option value="academic">Academic License</option>
-                            <option value="research">Research License</option>
-                            <option value="business">Business License</option>
-                            <option value="training">Training Request</option>
-                            <option value="other">Other Inquiry</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Your Message *</label>
-                        <textarea name="message" id="message-text" placeholder="Please describe your inquiry in detail..." rows="5" required></textarea>
-                    </div>                 
-                   
-                    <button type="submit" class="btn btn-primary" id="contact-submit-btn">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>            
+                    <!-- Formspree form -->
+                    <form action="https://formspree.io/f/mreagenr" 
+                          method="POST" 
+                          id="contact-form" 
+                          class="contact-form">
+                        
+                        <input type="hidden" name="_subject" value="New Compass 3 Contact Form Submission">
+                        <input type="hidden" name="_language" value="en">
+                        <input type="hidden" name="_next" value="#">
+                        
+                        <div class="form-group">
+                            <label>Your Name *</label>
+                            <input type="text" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone Number (Optional)</label>
+                            <input type="tel" name="phone" placeholder="(604) 644-3430">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Inquiry Type *</label>
+                            <select name="inquiry_type" id="inquiry-type-select" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="sales">Sales & Licensing</option>
+                                <option value="academic">Academic License</option>
+                                <option value="research">Research License</option>
+                                <option value="business">Business License</option>
+                                <option value="training">Training Request</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Your Message *</label>
+                            <textarea name="message" id="message-text" placeholder="Please describe your inquiry in detail..." rows="5" required></textarea>
+                        </div>                 
+                       
+                        <button type="submit" class="btn btn-primary" id="contact-submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>            
 
-                </form>
-                
-                <script>
-                // Wait for page to load
-                document.addEventListener('DOMContentLoaded', function() {
+                    </form>
                     
-                    // ===== LICENSE CARD CLICK HANDLERS - Redirect to Download (unchanged logic) =====
-                    const licenseCards = document.querySelectorAll('.license-card');
-                    
-                    licenseCards.forEach(card => {
-                        card.addEventListener('click', function(e) {
-                            const licenseType = this.getAttribute('data-license-type');
-                            document.getElementById('download').scrollIntoView({ 
-                                behavior: 'smooth' 
-                            });
-                            
-                            setTimeout(() => {
-                                const downloadLicenseCards = document.querySelectorAll('#download .license-card');
-                                downloadLicenseCards.forEach(downloadCard => {
-                                    if (downloadCard.getAttribute('data-license-type') === licenseType) {
-                                        downloadCard.style.transition = 'box-shadow 0.3s ease, transform 0.3s ease';
-                                        downloadCard.style.boxShadow = '0 0 0 3px rgba(0,102,204,0.3)';
-                                        downloadCard.style.transform = 'scale(1.02)';
-                                        
-                                        setTimeout(() => {
-                                            downloadCard.style.boxShadow = '';
-                                            downloadCard.style.transform = '';
-                                        }, 2000);
-                                    }
+                    <script>
+                    // Wait for page to load
+                    document.addEventListener('DOMContentLoaded', function() {
+                        
+                        // ===== LICENSE CARD CLICK HANDLERS - Redirect to Download (unchanged logic) =====
+                        const licenseCards = document.querySelectorAll('.license-card');
+                        
+                        licenseCards.forEach(card => {
+                            card.addEventListener('click', function(e) {
+                                const licenseType = this.getAttribute('data-license-type');
+                                document.getElementById('download').scrollIntoView({ 
+                                    behavior: 'smooth' 
                                 });
-                            }, 500);
+                                
+                                setTimeout(() => {
+                                    const downloadLicenseCards = document.querySelectorAll('#download .license-card');
+                                    downloadLicenseCards.forEach(downloadCard => {
+                                        if (downloadCard.getAttribute('data-license-type') === licenseType) {
+                                            downloadCard.style.transition = 'box-shadow 0.3s ease, transform 0.3s ease';
+                                            downloadCard.style.boxShadow = '0 0 0 3px rgba(0,102,204,0.3)';
+                                            downloadCard.style.transform = 'scale(1.02)';
+                                            
+                                            setTimeout(() => {
+                                                downloadCard.style.boxShadow = '';
+                                                downloadCard.style.transform = '';
+                                            }, 2000);
+                                        }
+                                    });
+                                }, 500);
+                            });
                         });
+                        
+                        // ===== FORM HANDLER with AJAX =====
+                        var form = document.getElementById('contact-form');
+                        if (form) {
+                            var newForm = form.cloneNode(true);
+                            form.parentNode.replaceChild(newForm, form);
+                            var freshForm = document.getElementById('contact-form');
+                            
+                            freshForm.addEventListener('submit', function(e) {
+                                e.preventDefault();
+                                submitContactForm(e);
+                            });
+                        }
                     });
                     
-                    // ===== FORM HANDLER with AJAX =====
-                    var form = document.getElementById('contact-form');
-                    if (form) {
-                        var newForm = form.cloneNode(true);
-                        form.parentNode.replaceChild(newForm, form);
-                        var freshForm = document.getElementById('contact-form');
+                    function submitContactForm(event) {
+                        var form = document.getElementById('contact-form');
+                        var submitBtn = document.getElementById('contact-submit-btn');
+                        var originalBtnText = submitBtn.innerHTML;
                         
-                        freshForm.addEventListener('submit', function(e) {
-                            e.preventDefault();
-                            submitContactForm(e);
-                        });
-                    }
-                });
-                
-                function submitContactForm(event) {
-                    var form = document.getElementById('contact-form');
-                    var submitBtn = document.getElementById('contact-submit-btn');
-                    var originalBtnText = submitBtn.innerHTML;
-                    
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                    submitBtn.disabled = true;
-                    
-                    var formData = new FormData(form);
-                    
-                    fetch(form.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            document.getElementById('contact-form').style.display = 'none';
-                            document.getElementById('success-message').style.display = 'block';
-                        } else {
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                        submitBtn.disabled = true;
+                        
+                        var formData = new FormData(form);
+                        
+                        fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                document.getElementById('contact-form').style.display = 'none';
+                                document.getElementById('success-message').style.display = 'block';
+                            } else {
+                                alert('There was a problem sending your message. Please try again.');
+                                submitBtn.innerHTML = originalBtnText;
+                                submitBtn.disabled = false;
+                            }
+                        })
+                        .catch(error => {
                             alert('There was a problem sending your message. Please try again.');
                             submitBtn.innerHTML = originalBtnText;
                             submitBtn.disabled = false;
-                        }
-                    })
-                    .catch(error => {
-                        alert('There was a problem sending your message. Please try again.');
-                        submitBtn.innerHTML = originalBtnText;
+                        });
+                        
+                        return false;
+                    }
+                    
+                    function resetContactForm() {
+                        document.getElementById('contact-form').reset();
+                        document.getElementById('contact-form').style.display = 'block';
+                        document.getElementById('success-message').style.display = 'none';
+                        
+                        var submitBtn = document.getElementById('contact-submit-btn');
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
                         submitBtn.disabled = false;
-                    });
+                    }
+                    </script>
                     
-                    return false;
-                }
-                
-                function resetContactForm() {
-                    document.getElementById('contact-form').reset();
-                    document.getElementById('contact-form').style.display = 'block';
-                    document.getElementById('success-message').style.display = 'none';
-                    
-                    var submitBtn = document.getElementById('contact-submit-btn');
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-                    submitBtn.disabled = false;
-                }
-                </script>
-                
-                <style>
-                .success-message {
-                    background: #f8f9fa;
-                    border: 1px solid #e9ecef;
-                    border-radius: 8px;
-                    padding: 2.5rem 2rem;
-                    text-align: center;
-                    margin-top: 1rem;
-                    animation: fadeIn 0.5s ease;
-                }
-                .success-message .message-content {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 1rem;
-                }
-                .success-message .fa-check-circle {
-                    font-size: 4rem;
-                    color: #28a745;
-                    margin-bottom: 1rem;
-                }
-                .success-message h3 {
-                    color: #28a745;
-                    margin: 0;
-                    font-size: 1.8rem;
-                    font-weight: 600;
-                }
-                .success-message p {
-                    color: #6c757d;
-                    margin: 0.5rem 0;
-                    font-size: 1.1rem;
-                    line-height: 1.5;
-                }
-                .btn-secondary {
-                    background: #6c757d;
-                    color: white;
-                    border: none;
-                    padding: 0.75rem 1.75rem;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    margin-top: 1.5rem;
-                    font-size: 1rem;
-                    font-weight: 500;
-                    transition: background 0.3s ease;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                }
-                .btn-secondary:hover {
-                    background: #5a6268;
-                }
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(10px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                .fa-spinner {
-                    margin-right: 8px;
-                }
-                </style>
-              
+                    <style>
+                    .success-message {
+                        background: #f8f9fa;
+                        border: 1px solid #e9ecef;
+                        border-radius: 8px;
+                        padding: 2.5rem 2rem;
+                        text-align: center;
+                        margin-top: 1rem;
+                        animation: fadeIn 0.5s ease;
+                    }
+                    .success-message .message-content {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1rem;
+                    }
+                    .success-message .fa-check-circle {
+                        font-size: 4rem;
+                        color: #28a745;
+                        margin-bottom: 1rem;
+                    }
+                    .success-message h3 {
+                        color: #28a745;
+                        margin: 0;
+                        font-size: 1.8rem;
+                        font-weight: 600;
+                    }
+                    .success-message p {
+                        color: #6c757d;
+                        margin: 0.5rem 0;
+                        font-size: 1.1rem;
+                        line-height: 1.5;
+                    }
+                    .btn-secondary {
+                        background: #6c757d;
+                        color: white;
+                        border: none;
+                        padding: 0.75rem 1.75rem;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        margin-top: 1.5rem;
+                        font-size: 1rem;
+                        font-weight: 500;
+                        transition: background 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                    }
+                    .btn-secondary:hover {
+                        background: #5a6268;
+                    }
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: translateY(10px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                    .fa-spinner {
+                        margin-right: 8px;
+                    }
+                    </style>
+                  
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
     
     <!-- Footer -->
     <footer class="footer">
